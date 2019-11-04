@@ -24,7 +24,7 @@ func (this *Logger) RegisterHook(hook Hook) {
     this.hook = hook
 }
 
-func (this *Logger) Loop() {
+func (this *Logger) loop() {
     for msg := range this.msgQueue {
         if err := this.hook(msg); err != nil {
             log.Println("handle msg failed:", err)
@@ -49,7 +49,7 @@ func NewLogStash(config ...*Config) *Logger {
         manager:  &Manager{config: mergeConfig(config...)},
     }
     logger.manager.initLogManager()
-    go logger.Loop()
+    go logger.loop()
     return logger
 }
 
