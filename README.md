@@ -14,7 +14,7 @@ logger := NewLogStash(&Config{
 })
 ```
 
-_4_. then you can use logger in anywhere you need sink log to the path you specified by this command:
+_4_. then you can use logger in anywhere you need to sink log to the specified path:
 ```go
 logger.Sink(Massage{
     "auth": "fengjiabin",
@@ -22,7 +22,7 @@ logger.Sink(Massage{
     })
 ``` 
 ### Hooks
-1. you can use hook to post process the massage you sinked, such as add some other field. you can do this simply by register a hook function:
+1. you can use hook to postprocess the massage you sinked, such as add some other fields. You can do this simply by register a hook function:
 ```go
 logger.RegisterHook(func(msg Massage)(err error){
     mas["email"]="j.b.feng@foxmail.com"
