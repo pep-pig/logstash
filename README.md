@@ -2,9 +2,9 @@
 Push json formatted log to local file system
 
 ## Usage
-1. go get github.com/vonlippmann/logstash
-2. import "github.com/vonlippmann/logstash" in your code
-3. make a new instance of Logger:
+_1_. go get github.com/vonlippmann/logstash
+_2_. import "github.com/vonlippmann/logstash" in your code
+_3_. make a new instance of Logger:
 ```go
 logger := NewLogStash(&Config{
         LogPath:     "<your specified path>",
@@ -14,7 +14,7 @@ logger := NewLogStash(&Config{
 })
 ```
 
-4. then you can use logger in anywhere you need sink log to the path you specified by this command:
+_4_. then you can use logger in anywhere you need sink log to the path you specified by this command:
 ```go
 logger.Sink(Massage{
     "auth": "fengjiabin",
@@ -26,6 +26,7 @@ logger.Sink(Massage{
 ```go
 logger.RegisterHook(func(msg Massage)(err error){
     mas["email"]="j.b.feng@foxmail.com"
+    return
 })
 ```
 
