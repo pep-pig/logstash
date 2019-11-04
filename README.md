@@ -2,9 +2,9 @@
 Push json formatted log to local file system
 
 ## Usage
-_1_. go get github.com/vonlippmann/logstash
-_2_. import "github.com/vonlippmann/logstash" in your code
-_3_. make a new instance of Logger:
+_1_. go get github.com/vonlippmann/logstash<br>
+_2_. import "github.com/vonlippmann/logstash" in your code<br>
+_3_. make a new instance of Logger:<br>
 ```go
 logger := NewLogStash(&Config{
         LogPath:     "<your specified path>",
