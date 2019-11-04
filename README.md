@@ -14,14 +14,14 @@ logger := NewLogStash(&Config{
 })
 ```
 
-4 then you can use logger in anywhere you need sink log to the path you specified by this command:
+4. then you can use logger in anywhere you need sink log to the path you specified by this command:
 ```go
 logger.Sink(Massage{
     "auth": "fengjiabin",
     "cop":  "xiaomi",
     })
 ``` 
-###Hooks
+### Hooks
 1. you can use hook to post process the massage you sinked, such as add some other field. you can do this simply by register a hook function:
 ```go
 logger.RegisterHook(func(msg Massage)(err error){
@@ -29,7 +29,7 @@ logger.RegisterHook(func(msg Massage)(err error){
 })
 ```
 
-###Example
+### Example
 
 ```go
 package main
@@ -46,17 +46,15 @@ func main(){
 }
 
 func addField(massage Massage) (err error) {
-    massage["name"] = "fengjb"
-    massage["test"] = 1
-    massage["program"] = "hello world"
+    massage["email"] = "j.b.feng@foxmail.com"
     return
 }
 
 func init() {
     logger = NewLogStash(&Config{
-        LogPath:     "/Users/fengjb/GoProjects/gopath/src/logstash",
+        LogPath:     "/var/log/logstash",
         LogKeepDays: 0,
-        FileName:    "falcon",
+        FileName:    "elk",
         CleanLog:    false,
     })
     logger.RegisterHook(addField)
