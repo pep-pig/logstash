@@ -3,6 +3,11 @@ package logstash
 import (
     "encoding/json"
     "log"
+    "sync"
+)
+
+var (
+    lock = sync.Mutex{}
 )
 
 type Config struct {
@@ -39,6 +44,8 @@ func (this *Logger) loop() {
 }
 
 func (this *Logger) Sink(msg Massage) {
+    lock.Lock()
+    defer lock.Unlock()
     this.msgQueue <- msg
 }
 
