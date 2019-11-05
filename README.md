@@ -22,7 +22,7 @@ logger.Sink(Massage{
     })
 ``` 
 ### Hooks
-1. you can use hook to postprocess the massage you sinked, such as add some other fields. You can do this simply by register a hook function:
+* you can use hook to postprocess the massage you sinked, such as add some other fields. You can do this simply by register a hook function:
 ```go
 logger.RegisterHook(func(msg Massage)(err error){
     mas["email"]="j.b.feng@foxmail.com"
