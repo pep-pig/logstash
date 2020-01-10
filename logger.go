@@ -31,8 +31,9 @@ func (this *Logger) RegisterHook(hook Hook) {
 
 func (this *Logger) loop() {
     for msg := range this.msgQueue {
-        if err := this.hook(msg); err != nil {
-            log.Println("handle msg failed:", err)
+        if shouldDrop := this.hook(msg); shouldDrop {
+            log.Printf("will drop massage:%+v\n", msg)
+            continue
         }
         jsonMsg, err := json.Marshal(msg)
         if err != nil {
